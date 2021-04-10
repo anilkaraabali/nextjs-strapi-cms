@@ -1,0 +1,83 @@
+@import './abstracts/mixins';
+
+$header: 64px;
+$responsive-header: 56px;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100%;
+}
+
+body {
+  font-kerning: normal;
+  /* Support for IE. */
+  font-feature-settings: 'liga' 0;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#__next {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: #{$header} 1fr;
+  grid-template-areas: 'header' 'main' 'footer';
+  min-height: 100%;
+
+  // @include respond-above(md) {
+  //   grid-template-rows: #{$header} 1fr auto;
+  // }
+
+  main {
+    grid-area: main;
+    min-height: calc(100% - #{$header});
+    padding: 16px;
+
+    // @include respond-above(md) {
+    //   min-height: calc(100% - #{$header});
+    // }
+  }
+
+  footer {
+    grid-area: footer;
+  }
+}
+
+#blog-markdown {
+  p {
+    font-size: 16px;
+  }
+
+  a {
+    color: #8c4bff;
+    text-decoration: none;
+    transition: color .1s linear;
+
+    &:hover {
+      color: #4e26e0;
+    }
+  }
+
+  h4 {
+      font-size: 32px;
+      line-height: 1.25em;
+      margin-bottom: 12px;
+      margin-top: 16px;
+  }
+}

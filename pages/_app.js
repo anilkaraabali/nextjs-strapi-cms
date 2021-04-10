@@ -1,7 +1,51 @@
-import '../styles/globals.css'
+import '../styles/global.scss'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider } from '@material-ui/core/styles'
+import Head from 'next/head'
+import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
+
+import { Footer, Header } from '../components'
+import { theme } from '../theme'
+
+const MyApp = ({ Component, pageProps, err }) => {
+    // const store = useStore(pageProps.initialReduxStore)
+
+    useEffect(() => {
+        // Remove the server-side injected CSS.
+        const jssStyles = document.querySelector('#jss-server-side')
+        if (jssStyles) {
+            jssStyles.parentElement.removeChild(jssStyles)
+        }
+    }, [])
+
+    return (
+        <React.Fragment>
+            <Head>
+                <title>My page</title>
+                <meta
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width"
+                />
+            </Head>
+
+            <ThemeProvider theme={theme}>
+                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                <CssBaseline />
+                <Header />
+                <main>
+                    <Component {...pageProps} err={err} />
+                </main>
+                <Footer />
+            </ThemeProvider>
+        </React.Fragment>
+    )
+}
+
+MyApp.propTypes = {
+    Component: PropTypes.elementType.isRequired,
+    pageProps: PropTypes.object.isRequired
 }
 
 export default MyApp
