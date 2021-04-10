@@ -10,8 +10,6 @@ import { Footer, Header } from '../components'
 import { theme } from '../theme'
 
 const MyApp = ({ Component, pageProps, err }) => {
-    // const store = useStore(pageProps.initialReduxStore)
-
     useEffect(() => {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector('#jss-server-side')
