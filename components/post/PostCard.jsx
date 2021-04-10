@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import Image from 'next/image'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-import { fromImageToUrl } from '../../utils/fromImageToUrl'
 import PostAuthor from './PostAuthor'
 
 const useStyles = makeStyles((theme) => ({
@@ -29,12 +29,16 @@ const useStyles = makeStyles((theme) => ({
 
 const PostCard = ({ post }) => {
     const classes = useStyles()
-    const coverImage = fromImageToUrl(post.featured_image.formats.small.url)
 
     return (
         <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
             <article className={classes.card}>
-                <img src={coverImage} className={classes.img} alt="" />
+                <Image
+                    src={post.featured_image.formats.small.url}
+                    alt={post.title}
+                    width={post.featured_image.width}
+                    height={post.featured_image.height}
+                />
 
                 <div className={classes.content}>
                     <Typography variant="h5" gutterBottom>

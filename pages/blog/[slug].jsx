@@ -4,11 +4,11 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Head from 'next/head'
+import Image from 'next/image'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 
 import PostAuthor from '../../components/post/PostAuthor'
-import { fromImageToUrl } from '../../utils'
 import { request } from '../api/axios'
 
 const useStyles = makeStyles((theme) => ({
@@ -19,14 +19,14 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(4),
         marginBottom: theme.spacing(2)
     },
-    img: {
-        width: '100%'
+    figure: {
+        marginLeft: 0,
+        marginRight: 0
     }
 }))
 
 const PostDetail = ({ post }) => {
     const classes = useStyles()
-    const coverImage = fromImageToUrl(post.featured_image.formats.large.url)
 
     return (
         <React.Fragment>
@@ -53,8 +53,13 @@ const PostDetail = ({ post }) => {
                     </Grid>
                 </Container>
 
-                <figure>
-                    <img src={coverImage} className={classes.img} alt="" />
+                <figure className={classes.figure}>
+                    <Image
+                        src={post.featured_image.formats.medium.url}
+                        alt={post.title}
+                        width={post.featured_image.width}
+                        height={post.featured_image.height}
+                    />
                 </figure>
 
                 <Container maxWidth="sm" id="blog-markdown">
