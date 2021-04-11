@@ -20,11 +20,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can see the live demo of the app on the [Vercel](https://nextjs-git-master-anilkaraabali.vercel.app/)
 
-### Integrations
+## Integrations
 - Database: [PostgreSQL](https://strapi.io/blog/deploying-a-strapi-api-on-heroku)
 - UI Library: [Material UI](https://material-ui.com/)
 - Prop Validations: [PropTypes](https://www.npmjs.com/package/prop-types)
 - CMS: [Strapi](https://strapi.io/)
+- SEO: [Next Seo](https://www.npmjs.com/package/next-seo)
 
 ## Deploy on Heroku
 

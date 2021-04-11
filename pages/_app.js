@@ -2,11 +2,12 @@ import '../styles/global.scss'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
-import Head from 'next/head'
+import { DefaultSeo } from 'next-seo'
 import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
 
 import { Footer, Header } from '../components'
+import SEO from '../next-seo.config'
 import { theme } from '../theme'
 
 const MyApp = ({ Component, pageProps, err }) => {
@@ -20,13 +21,7 @@ const MyApp = ({ Component, pageProps, err }) => {
 
     return (
         <React.Fragment>
-            <Head>
-                <title>My page</title>
-                <meta
-                    name="viewport"
-                    content="minimum-scale=1, initial-scale=1, width=device-width"
-                />
-            </Head>
+            <DefaultSeo {...SEO} />
 
             <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
