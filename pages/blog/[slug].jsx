@@ -55,7 +55,7 @@ const PostDetail = ({ post }) => {
 
                 <figure className={classes.figure}>
                     <Image
-                        src={post.featured_image.formats.medium.url}
+                        src={post.featured_image.url}
                         alt={post.title}
                         width={post.featured_image.width}
                         height={post.featured_image.height}

@@ -65,12 +65,12 @@ a {
   }
 
   a {
-    color: #8c4bff;
+    color: #0070f3;
     text-decoration: none;
     transition: color .1s linear;
 
     &:hover {
-      color: #4e26e0;
+      color: rgba(0,118,255,0.9);
     }
   }
 
